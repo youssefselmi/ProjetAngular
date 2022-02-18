@@ -1,0 +1,72 @@
+
+
+<h1>Add Rayon</h1>
+<form #f="ngForm" >
+  <div class="form-group">
+    <label>id</label>
+    <input type="number" name="id" class="form-control" [(ngModel)]="rayon.idRayon" #i="ngModel" required>
+  </div>
+  <div class="alert alert-danger" *ngIf="i.invalid && i.touched">
+    id est obligatoire
+  </div>
+  <div class="form-group">
+    <label>code</label>
+    <input type="text" name="code" class="form-control" [(ngModel)]="rayon.code" #t="ngModel"
+           required
+           pattern="[a-zA-Z1-9]+$"
+           minlength="3">
+  </div>
+  <div class="alert alert-danger" *ngIf="t.invalid && t.touched">
+    <div *ngIf="t.errors.required">code est obligatoire</div>
+    <div *ngIf="t.errors.minlength">code minlength is 3</div>
+    <div *ngIf="t.errors.pattern">message pattern</div>
+  </div>
+  <!--<div class="form-group">
+    <label>libelle</label>
+    <input type="text" name="libelle" class="form-control" [(ngModel)]="rayon.libelle" #q="ngModel"
+           required>
+  </div>
+  <div class="alert alert-danger" *ngIf="q.invalid && q.touched">
+    libelle is required
+  </div>
+-->
+
+<div>
+<label for="pet-select">Type Rayon:</label>
+
+  <select name="libelle" class="form-control"  [(ngModel)]="rayon.libelle" #q="ngModel"
+  required>
+      <option value="">--Please choose an option--</option>
+      <option value="dog">Nourriture</option>
+      <option value="cat">Electromenage</option>
+      <option value="hamster">Electronique</option>
+      <option value="parrot">Laiture</option>
+      <option value="spider">Biscuit</option>
+  </select>
+<div class="alert alert-danger" *ngIf="q.invalid && q.touched">
+  libelle is required
+</div>
+
+</div>
+
+
+
+
+ 
+
+          <label>Quantite</label>
+          <input type="number" name="quantite" class="form-control" [(ngModel)]="rayon.qte_maximale" #e="ngModel"
+                 required>
+        <div class="alert alert-danger" *ngIf="e.invalid && e.touched">
+          Quantite is required
+        
+        </div>
+
+        <ng-template #popContent>Ajout effectue</ng-template>
+<ng-template #popTitle>Nouveau Rayon !!!</ng-template>
+
+
+
+  <button class="btn btn-success" [disabled]="f.invalid" (click)="addRayon(rayon)"[ngbPopover]="popContent" [popoverTitle]="popTitle" >save</button>
+  <!--(click)="sendmail(fournisseur.email_fournisseur)" -->
+</form>

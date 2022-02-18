@@ -1,0 +1,20 @@
+{
+  "fournisseur": [
+    {
+      "idFournisseur": 2,
+      "code": "54aa",
+      "libelle": "zaza",
+      "image_fournisseur": "produit.jpeg",
+      "date_fin_contrat": "2021-11-08",
+      "like": 0
+    },
+    {
+      "idFournisseur": 11,
+      "code": "test",
+      "libelle": "test",
+      "image_fournisseur": "produit.jpeg",
+      "date_fin_contrat": "2021-04-03",
+      "like": 0
+    }
+  ]
+}

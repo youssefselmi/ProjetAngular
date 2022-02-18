@@ -1,0 +1,28 @@
+
+<div *ngIf="fournisseur.idFournisseur == idddInput || idddInput == null">
+  
+    <div class="card" style="width: 18rem;">
+      <img src={{fournisseur.image_fournisseur}} class="card-img-top" alt="..." >
+      <div class="card-body">
+        <h5 class="card-text">{{fournisseur.libelle}}</h5>
+        <button class="btn btn-primary" (click)="sendNotif()">{{fournisseur.likeFournisseur}}<=>like❤️</button>
+        <a [routerLink]="['fournisseur',fournisseur.idFournisseur,fournisseur.libelle,fournisseur.date_fin_contrat,fournisseur.likeFournisseur,fournisseur.email_fournisseur,fournisseur.image_fournisseur]"  class="btn btn-dark" style="float: right">
+          detail
+        </a>
+      </div>
+  </div>
+</div>
+<!--
+<div class="row">
+  <div class="col-md-3">
+    <div class="card" style="width: 18rem;">
+      <img src="../../assets/fournisseur.jpg" class="card-img-top" alt="...">
+      <div class="card-body">
+        <h5 class="card-title">{{fournisseur.idFournisseur}}</h5>
+        <p class="card-text">an account that does not allow for unlimited  but instead has certain restrictions</p>
+        <a [routerLink]="['/mainuser/category','Blocked Account']" class="btn btn-primary">show all</a>
+      </div>
+    </div>
+  </div>
+</div>
+-->

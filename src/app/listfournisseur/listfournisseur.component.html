@@ -1,0 +1,139 @@
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="/">
+        <img
+          src="../../assets/logo.jpg"
+          alt=""
+          width="30"
+          height="24"
+          class="d-inline-block align-text-top"
+        />
+        TunUP shop
+      </a>
+      <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="#">Produit</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="/facture">Facture</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="/fournisseur">Fournisseurs</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="/adminfournisseur">Admin Fournisseur</a>
+          </li>
+        </ul>
+        <form class="d-flex">
+            <input type="number" [(ngModel)]="idd" name="idd" class="form-control">
+
+          <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+      </div>
+    </div>
+  </nav>
+  
+
+
+
+
+
+
+  <h1>Fournisseur List</h1>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <div class="container">
+      <div class="row">
+          <div class="col-lg-12">
+              <div class="main-box clearfix">
+                  <div class="table-responsive" id="htmlData" >
+                     <!-- Search: <input type="text" [(ngModel)]="searchval"> {{searchval}}-->
+                      <table class="table table-success table-striped ">
+                          <thead>
+                              <tr>
+                                  <th (click)="sort('idFournisseur')">ID 🔼<i class="fa fa-sort"></i></th>
+                                  <th (click)="sort('idFournisseur')">Code</th>
+
+                                  <th><span>Libelle</span></th>
+                                  <th><span>Date_fin_contrat</span></th>
+                                  <th><span>Email</span></th>
+
+  
+                              </tr>
+                          </thead>
+                          <tbody *ngFor="let u of listFournisseur | orderBy: key: reverse | paginate: {itemsPerPage:3,currentPage:p}; let i=index">
+
+                              <tr  [style.background-color]=" u.idFournisseur == idd ? 'red' : 'green'"   *ngIf="u.idFournisseur == idd || idd == null"   >
+  
+                        
+       
+                                  <td>
+                                      {{u.idFournisseur}}
+                                  </td>
+                                  <td>
+                                      {{ u.code }}
+                                  </td>
+                                  <td>
+                                      {{u.libelle}}
+                                  </td>
+                                  <td>
+                                      {{u.date_fin_contrat}}
+                                  </td>
+                                  <td>
+                                    {{u.email_fournisseur}}
+                                </td>
+                                 
+                                 
+                                  <td style="width: 20%;">
+                         <!-- <button ng-if="{{u.date_fin_contrat}} < {{CurrentDate}}" class="btn-danger" type="button">deletef</button>--> 
+  
+                         <i class="fa fa-pencil-square-o" aria-hidden="true">  <button class="btn-danger"(click)="delete(u.idFournisseur,u.date_fin_contrat,u.email_fournisseur,u.libelle)"> Delete</button></i> 
+                                     <!-- <button class="btn-danger" [hidden]="u.accountCategory == 'Admin'">Delete</button>
+                                      <button class="btn-danger" *ngIf="u.accountCategory != 'Admin'">Delete</button>-->
+                                      
+                             
+
+                                  </td>
+                              
+                              </tr>
+                            
+                              
+                              </tbody>
+
+                              
+                              <pagination-controls (pageChange)="p =$event"></pagination-controls>
+
+                              </table>
+                              </div>
+                              <div class="col-md-4 text-right">
+                                <button class="btn btn-success btn-block" (click)="openPDF()">Download PDF</button> &par;
+                              <button class="btn btn-success btn-block" (click)="exportExcel()">Export Excel</button>&par;
+                              <button class="btn btn-success btn-block" (click)="MAJ()">MAJ</button>
+
+                          </div>
+
+                              </div>
+                              </div>
+                              </div>
+                              </div>
+
+
+
+
+
+
+
+
+
+
+<app-template-form-fournisseur ></app-template-form-fournisseur>
+
+
+<!--<button (click)="showimages(u.image_fournisseur,i)" >Show images</button>
+<ng-image-slider  *ngIf="verifslider==i" #nav [images]="imgCollection"    ></ng-image-slider> -->
+
+ 

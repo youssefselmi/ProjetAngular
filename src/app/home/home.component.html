@@ -1,0 +1,39 @@
+
+
+<header>  </header>
+<form class="d-flex">
+    <input type="number" [(ngModel)]="iddd" name="iddd" class="form-control">
+  <button class="btn btn-outline-success" type="submit">Search</button>
+</form>
+
+<div class="row">
+<app-fournisseur *ngFor="let f of listFournisseur" let i=index [fournisseur]="f" (notification)="incremtLike($event)"
+[idddInput]="iddd" class="col-md-3">
+</app-fournisseur>
+
+</div>
+
+
+  
+
+<!--<app-template-form-fournisseur (saveEvent)="pushFournisseur($event)"></app-template-form-fournisseur>-->
+
+<!--<app-listfournisseur></app-listfournisseur>-->
+
+
+
+<app-sliderfournisseur></app-sliderfournisseur>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

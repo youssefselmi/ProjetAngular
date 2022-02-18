@@ -1,0 +1,75 @@
+
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="/">
+        <img
+          src="../../assets/logo.jpg"
+          alt=""
+          width="30"
+          height="24"
+          class="d-inline-block align-text-top"
+        />
+        TunUP shop
+      </a>
+      <div class="collapse navbar-collapse" id="navbarTogglerDemo01">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="/">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="#">Produit</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="/facture">Facture</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="/fournisseur">Fournisseurs</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" href="/adminfournisseur">Admin Fournisseur</a>
+          </li>
+        </ul>
+        <form class="d-flex">
+            <input type="number"  class="form-control">
+
+          <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+      </div>
+    </div>
+  </nav> 
+<br>
+
+<div>
+<div class="card" style="width: 18rem;">
+    <img src="{{image_fournisseur}}" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">Detail Fournisseur</h5>
+      <p class="card-text">Some Details of this fournisseur</p>
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">Code --> {{id}}</li>
+      <li class="list-group-item">Libelle --> {{libelle}}</li>
+      <li class="list-group-item">Date_fin_contrat --> {{date_fin_contrat}}</li>
+      <li class="list-group-item">Nombre de like --> {{likeFournisseur}}</li>
+      <li class="list-group-item">Email {{email_fournisseur}}</li>
+
+        
+    </ul>
+
+    <div class="card-body ">
+      <div class="container">
+        <ngx-qrcode 
+            [elementType]="elementType" 
+            [value] = "value"
+            cssClass = {{email_fournisseur}}
+            
+            >
+      </ngx-qrcode>
+      </div>
+    </div>
+
+
+  </div>
+ 
+
+</div>

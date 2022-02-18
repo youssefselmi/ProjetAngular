@@ -1,0 +1,66 @@
+
+
+<h1>Add Fournisseur</h1>
+<form #f="ngForm" name="registerForm" >
+  <div class="form-group">
+    <label>id</label>
+    <input type="number" name="id" class="form-control" [(ngModel)]="fournisseur.idFournisseur" #i="ngModel" required>
+  </div>
+  <div class="alert alert-danger" *ngIf="i.invalid && i.touched">
+    id is required
+  </div>
+  <div class="form-group">
+    <label>code</label>
+    <input type="text" name="code" class="form-control" [(ngModel)]="fournisseur.code" #t="ngModel"
+           required
+           pattern="[a-zA-Z1-9]+$"
+           minlength="3">
+  </div>
+  <div class="alert alert-danger" *ngIf="t.invalid && t.touched">
+    <div *ngIf="t.errors.required">code est obligatoire</div>
+    <div *ngIf="t.errors.minlength">code minlength is 3</div>
+    <div *ngIf="t.errors.pattern">message pattern</div>
+  </div>
+  <div class="form-group">
+    <label>libelle</label>
+    <input type="text" name="libelle" class="form-control" [(ngModel)]="fournisseur.libelle" #q="ngModel"
+           required>
+  </div>
+  <div class="alert alert-danger" *ngIf="q.invalid && q.touched">
+    Verifier libelle
+  </div>
+
+  <label>Date_fin_contrat</label>
+  <input type="date" name="date_fin_contrat" class="form-control" [(ngModel)]="fournisseur.date_fin_contrat" #d="ngModel"
+         required>
+
+<div class="alert alert-danger" *ngIf="d.invalid && d.touched">
+    Verifier la date
+  </div>
+
+
+  <label for="avatar">Choose a profile picture:</label>
+  <input type="file"
+         id="avatar" name="image_fournisseur" [(ngModel)]="fournisseur.image_fournisseur"
+         accept="image/png, image/jpeg"><br>
+
+         <div class="form-group">
+          <label>Email</label>
+          <input type="text" name="email_fournisseur" class="form-control" [(ngModel)]="fournisseur.email_fournisseur" #e="ngModel"
+                 required
+                 pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$">
+                 
+        </div>
+        <div class="alert alert-danger" *ngIf="e.invalid && e.touched">
+          Verifier l'email
+        </div>
+
+
+
+<ng-template #popContent>Ajout effectue</ng-template>
+<ng-template #popTitle>Nouveau Fournisseur !!!</ng-template>
+
+
+  <button class="btn btn-success" [disabled]="f.invalid" (click)="addFournisseur(fournisseur)"  [ngbPopover]="popContent" [popoverTitle]="popTitle">save</button>
+  <!--(click)="sendmail(fournisseur.email_fournisseur)" -->
+</form>
